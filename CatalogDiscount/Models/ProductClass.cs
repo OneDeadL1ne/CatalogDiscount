@@ -14,15 +14,15 @@ namespace CatalogDiscount.Models
         public string model { get; set; }
         public decimal price { get; set; }
         public decimal discount { get; set; }
-        public string pahtitle { get; set; } = string.Empty;    
-        public string AddCart { get; set; }
+        public string pahtitle { get; set; } = string.Empty;
+        public string AddCart { get; set; } = "Добавить";
 
-        public ProductClass(string model, int price, string pathtitle, string AddCart) 
+        public ProductClass(string model, int price, string pathtitle) 
         {
             this.model = model;
             this.price = price;
             this.pahtitle = pathtitle;
-            this.AddCart = AddCart;
+            
         }
         public static ObservableCollection<ProductClass> CartProduct { get; set; } = new ObservableCollection<ProductClass>();
 
@@ -36,11 +36,18 @@ namespace CatalogDiscount.Models
             {
                 product.discount = product.price-(product.price * 0.08m);
             }
+            else if (product.price >= 5000)
+            {
+                product.discount = product.price - (product.price * 0.05m);
+            }
             else if (product.price >= 1000)
             {
                 product.discount = product.price - (product.price * 0.01m);
             }
-
+            else
+            {
+                return product.discount = product.price;
+            }
             return product.discount;
         }
 

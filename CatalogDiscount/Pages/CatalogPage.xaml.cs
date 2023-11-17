@@ -26,7 +26,7 @@ namespace CatalogDiscount.Pages
         public CatalogPage()
         {
             InitializeComponent();
-            products.Add(new ProductClass("Холодильник", 20000, null, "Добавить"));
+            products.Add(new ProductClass("Холодильник", 20000, null));
 
             lv_Products.ItemsSource = products;
         }
